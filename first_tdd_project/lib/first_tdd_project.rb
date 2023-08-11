@@ -47,3 +47,36 @@ class Array
         arr.last
     end
 end
+
+class Tower
+    attr_reader :store, :player
+    def initialize # (board)
+        @store = [[1,2,3],[],[]]
+        @player = Player.new
+    end
+
+    def move(pos) #Player.user_input
+        
+        var = @store[pos[0]].pop
+        @store[pos[1]].push(var)
+    end
+
+    def play
+        until won?
+            puts @store
+            response = @player.user_input
+            move(response)
+        end
+    end
+
+    def won?
+        @store == [[],[],[1,2,3]]
+    end
+end
+
+class Player
+    def user_input
+        puts "choose stack to take from and where to place"
+        response = gets.chomp.split.map(&:to_i) # [0, 1]
+    end
+end
