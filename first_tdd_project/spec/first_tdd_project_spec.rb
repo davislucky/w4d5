@@ -45,10 +45,17 @@ describe 'Tower' do
     end
 
     describe '#won?' do
-        context 'should return true when game is over' do
-            it 'have initial stack in the last index' do
-                
-                expect(tower.won?).to eq(true)
+        context 'should return false when game is not over' do
+            it 'should return false' do
+                tower.store = [[],[3],[1,2]]
+                expect(tower.won?).to eq(false)
+            end
+        end
+
+        context "when ordered stack is in the last stack" do
+            it "should return true" do
+                tower.store = [[],[], [1,2,3]]
+                expect(tower.won?). to eq(true)
             end
         end
     end

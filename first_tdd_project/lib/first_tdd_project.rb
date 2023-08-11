@@ -49,7 +49,8 @@ class Array
 end
 
 class Tower
-    attr_reader :store, :player
+    attr_reader :player
+    attr_accessor :store
     def initialize # (board)
         @store = [[1,2,3],[],[]]
         @player = Player.new
@@ -70,7 +71,7 @@ class Tower
     end
 
     def won?
-        @store == [[],[],[1,2,3]]
+        store == [[],[],[1,2,3]]
     end
 
     def print
