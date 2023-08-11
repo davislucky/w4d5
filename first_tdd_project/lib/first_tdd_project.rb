@@ -56,21 +56,27 @@ class Tower
     end
 
     def move(pos) #Player.user_input
-        
-        var = @store[pos[0]].pop
-        @store[pos[1]].push(var)
+        var = @store[pos[0]].shift
+        @store[pos[1]].unshift(var)
+        @store
     end
 
     def play
         until won?
-            puts @store
             response = @player.user_input
             move(response)
+            self.print
         end
     end
 
     def won?
         @store == [[],[],[1,2,3]]
+    end
+
+    def print
+        @store.map do |row|
+            puts row.join("_")
+        end
     end
 end
 

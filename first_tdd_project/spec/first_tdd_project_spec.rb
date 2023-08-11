@@ -37,9 +37,11 @@ describe 'Tower' do
     end
 
     describe '#move' do
-        context 'shift from a stack'
-
-
+        context 'shift from a stack' do 
+            it 'shift first element of selected stack and unshift it to the other stack' do 
+                expect(tower.move([0,1])).to eq([[2,3],[1],[]])
+            end
+        end
     end
 
     describe '#won?' do
